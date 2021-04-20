@@ -8,7 +8,7 @@ You want to create or specify your own words? Just overwrite or replace the word
 - The included graphics library, `graphics.py`, was written by John Zelle for use with the book "Python Programming: An Introduction to Computer Science" (Franklin, Beedle & Associates). 
 
 ## Reference
-This program was originally written by Tom Catullo and modified by me as an reference project. I was learning Python and I didn't have time to start the project from scratch, but I did some moddifications to the project, that I think it was lacking of.
+This program was originally written by Tom Catullo and modified by me as an reference project. I was learning Python and I didn't have time to start the project from scratch, but I did some moddifications to the project, that I think it was lacking information to the user or customer.
 
 ## Modifications
 - Telling the user or customer know how tries have in total.
