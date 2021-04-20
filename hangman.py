@@ -278,6 +278,7 @@ def main(win, infile_name):
 		mouth.setOutline(color_rgb(0, 120, 0))
 		mouth.draw(win)
 		win_hangmanpic.append(mouth)
+		# Replace the rectangle for a circle and moved up where the original circle is located (mouth).
 		mouth_cover = Circle(Point(win_width / 2, 205), 50)
 		mouth_cover.setFill(color_rgb(126, 236, 53))
 		mouth_cover.setOutline(color_rgb(126, 236, 53))
@@ -287,11 +288,12 @@ def main(win, infile_name):
 		win_message.setText("Sorry! You didn't completely guess the word.")
 		win_message.setTextColor(color_rgb(170, 0, 0))
 		win_grid.setTextColor(color_rgb(170, 0, 0))
-		# Remove the incomplete Hangman picture
+		# Added the sad face when player lose the game.
+		# Remove the incomplete Hangman picture.
 		for hm_obj in win_hangmanpic:
 			hm_obj.undraw()
 		win_hangmanpic = []
-		# And replace it with a picture that's representative of winning the game
+		# And replace it with a picture that's representative of losing the game.
 		circle1 = Circle(Point(win_width / 2, 240), 110)
 		circle1.setOutline(color_rgb(170, 0, 0))
 		circle1.setFill(color_rgb(255, 177, 177))
@@ -319,6 +321,7 @@ def main(win, infile_name):
 		mouth.setOutline(color_rgb(170, 0, 0))
 		mouth.draw(win)
 		win_hangmanpic.append(mouth)
+		# Replace the rectangle for a circle and moved down where the original circle is located (mouth).
 		mouth_cover = Circle(Point(win_width / 2, 185), 50)
 		mouth_cover.setFill(color_rgb(255, 177, 177))
 		mouth_cover.setOutline(color_rgb(255, 177, 177))
