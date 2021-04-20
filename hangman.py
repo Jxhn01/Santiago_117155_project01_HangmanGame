@@ -4,12 +4,12 @@ from graphics import *
 
 
 #########################################################################
-# 											                            #
-# 								getInfile()								#
-#                             --------------- 							#
-# 											                            #
+# 					                                #
+# 				getInfile()				#
+#                             --------------- 				#
+# 				                            		#
 # Gets a text file containing words to be chosen by the Hangman program #
-# 											                            #
+# 									#
 #########################################################################
 def getInfile():
 	try:
@@ -31,12 +31,12 @@ def getInfile():
 
 
 ############################################################################
-# 																		   #
-# 								chooseWord()							   #
-# 						   	  ----------------							   #
-# 																		   #
+# 									   #
+# 				   chooseWord()				   #
+# 				 ----------------			   #
+# 									   #
 # Chooses a word randomly from the list of words taken from the input file #
-# 																		   #
+# 									   #
 ############################################################################
 def chooseWord(infile_name):
 	infile = open(infile_name, 'r')
@@ -50,13 +50,13 @@ def chooseWord(infile_name):
 
 
 ############################################################################################
-# 																						   #
-# 											drawPiece()									   #
-# 										------------------								   #
-# 																						   #
+# 											   #
+# 					    drawPiece()					   #
+# 					------------------				   #
+# 											   #
 # Draws a piece of the Hangman picture when an incorrect letter is guessed. The piece that #
-#	is drawn depends on the number of strikes that the player has amounted thus far		   #
-# 																						   #
+#	is drawn depends on the number of strikes that the player has amounted thus far	   #
+# 											   #
 ############################################################################################
 def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 	hangman_yaxis = win_width / 2.2  # The body of the hangman will align with this axis
@@ -104,13 +104,13 @@ def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 
 		
 #####################################################
-#													#
-# 						main()						#
-#					------------					#
-#													#
+#						    #
+# 			   main()		    #
+#			------------		    #
+#						    #
 # Carries out the main functionality of the program #
-#													#
-#													#
+#						    #
+#						    #
 #####################################################
 def main(win, infile_name):
 	# If a word list file hasn't yet been sepcified, then we need to get one
