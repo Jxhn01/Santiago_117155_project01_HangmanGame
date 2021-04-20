@@ -312,7 +312,7 @@ def main(win, infile_name):
 		eye2.draw(win)
 		win_hangmanpic.append(eye2)
 		eye1_inner = Circle(Point(win_width / 2 - 40, 285), 5)
-		eye1_inner.setFill(color_rgb(255, 177, 177))
+		eye1_inner.setFill(color_rgb(170, 0, 0))
 		eye1_inner.setOutline(color_rgb(170, 0, 0))
 		eye1_inner.draw(win)
 		win_hangmanpic.append(eye1_inner)
