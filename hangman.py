@@ -132,12 +132,15 @@ def main(win, infile_name):
 	# If a word list file hasn't yet been sepcified, then we need to get one
 	if not(infile_name):
 		infile_name = getInfile()
+
 	# Choose a word at random from the acquired word list
 	word, word_len = chooseWord(infile_name)
+
 	# Build the grid of empty spaces, one space for each letter of the chosen word
 	grid = '__'
 	for i in range(word_len - 1):
 		grid = grid + ' __'
+
 	# Generate the graphics window for the game's GUI
 	win_width = 500
 	win_width2 = 400
@@ -147,6 +150,7 @@ def main(win, infile_name):
 		#	a new window isn't generated each time a player chooses to "play again"
 		win = GraphWin("Hangman Simple-Game", win_width, win_height)
 		win.setCoords(0, 0, win_width, win_height)
+
 	# Draw the game message area, the ground of the Hangman graphic, and the empty grid
 	win_message2 = Text(Point(win_width2 / 1.60, 457), "Guess the correct word by entering letters. You have 7 attempts!\nThe words are related to useful things at school/university.")
 	win_message2.setStyle('bold')
@@ -160,12 +164,14 @@ def main(win, infile_name):
 	win_ground.draw(win)
 	win_grid = Text(Point(win_width / 2, win_height - 70), grid)
 	win_grid.draw(win)
+
 	# Draw the input box and accompanying text label
 	win_guesstxt = Text(Point(win_width / 2 - 35, 30), "Type a letter:")
 	win_guesstxt.draw(win)
 	win_guessinput = Entry(Point(win_width / 2 + 30, 28), 2)
 	win_guessinput.draw(win)
 	win_guessinput.setText('')
+
 	# Draw the "Guess it!" button and its label
 	win_butguess = Rectangle(Point(win_width / 2 + 55, 43), Point(win_width / 2 + 130, 13))
 	win_butguess.setFill(color_rgb(126, 236, 53))
@@ -174,6 +180,7 @@ def main(win, infile_name):
 	win_butguess_label = Text(Point(win_width / 2 + 94, 28), 'Guess it!')
 	win_butguess_label.setTextColor(color_rgb(0, 110, 0))
 	win_butguess_label.draw(win)
+
 	# Now, we keep taking guesses of letters until either the player amounts 7 total strikes (wrong
 	#	guesses), or until the player correctly guesses the entire word and the game is won
 	strikes = 0
@@ -187,6 +194,7 @@ def main(win, infile_name):
 		#	of the loop and wait for another click
 		if p.getX() < win_width / 2 + 55 or p.getX() > win_width / 2 + 130 or p.getY() < 13 or p.getY() > 43:
 			continue
+
 		# Grab the guessed letter, and if it's invalid, go back to the top of the loop and wait for another guess
 		guess = win_guessinput.getText().lower()
 		win_guessinput.setText('')
@@ -194,6 +202,7 @@ def main(win, infile_name):
 			if len(guess) != 1:
 				win_message.setText("Please only guess a single letter at a time. Try again!")
 			continue
+
 		# If the guessed letter is in the word, and it hasn't been guessed yet by the player, then we update our
 		#	grid by placing this letter in the appropriate empty spaces on the grid
 		if guess in word.lower() and not(guess in guessed_letters):
@@ -218,6 +227,7 @@ def main(win, infile_name):
 			strikes = strikes + 1
 			win_message.setText('{0} is a wrong guess! Try another letter.'.format(guess.upper()))
 			drawPiece(strikes, win, win_width, win_height, win_hangmanpic)
+
 	# The game is over, so let's remove some of the objects at the bottom of the window
 	#	to make room for the "Quit" and "Play Again?" buttons and the final message
 	win_guesstxt.undraw()
@@ -225,10 +235,12 @@ def main(win, infile_name):
 	win_butguess.undraw()
 	win_butguess_label.undraw()
 	win_message.move(0, -10)  # Move the message area down a bit to fill up some space
+
 	# Update the grid to display the full, actual word that the program chose
 	win_grid.setText(word.upper())
 	win_grid.setStyle('bold')
 	win_grid.setSize(16)
+
 	# Change the message at the bottom of the window to reflect a win or loss
 	if game_won == True:
 		win_message.setText("Congrats! You've guessed the word correctly.")
@@ -266,7 +278,7 @@ def main(win, infile_name):
 		mouth.setOutline(color_rgb(0, 120, 0))
 		mouth.draw(win)
 		win_hangmanpic.append(mouth)
-		mouth_cover = Rectangle(Point(win_width / 2 - 50, 200), Point(win_width / 2 + 50, 250))
+		mouth_cover = Circle(Point(win_width / 2, 205), 50)
 		mouth_cover.setFill(color_rgb(126, 236, 53))
 		mouth_cover.setOutline(color_rgb(126, 236, 53))
 		mouth_cover.draw(win)
@@ -275,17 +287,44 @@ def main(win, infile_name):
 		win_message.setText("Sorry! You didn't completely guess the word.")
 		win_message.setTextColor(color_rgb(170, 0, 0))
 		win_grid.setTextColor(color_rgb(170, 0, 0))
-		# And make the lines drawn in the Hangman picture red
-		i = 0
+		# Remove the incomplete Hangman picture
 		for hm_obj in win_hangmanpic:
-			if i == 3:
-				# This is the guy's head, which is a circle, so it requires a different function
-				#	to change the circle's color
-				hm_obj.setOutline(color_rgb(170, 0, 0))
-			else:
-				hm_obj.setFill(color_rgb(170, 0, 0))
-			# Increment the index counter
-			i = i + 1
+			hm_obj.undraw()
+		win_hangmanpic = []
+		# And replace it with a picture that's representative of winning the game
+		circle1 = Circle(Point(win_width / 2, 240), 110)
+		circle1.setOutline(color_rgb(170, 0, 0))
+		circle1.setFill(color_rgb(255, 177, 177))
+		circle1.draw(win)
+		win_hangmanpic.append(circle1)
+		eye1 = Circle(Point(win_width / 2 - 40, 285), 20)
+		eye1.setOutline(color_rgb(170, 0, 0))
+		eye1.draw(win)
+		win_hangmanpic.append(eye1)
+		eye2 = eye1.clone()
+		eye2.move(80, 0)
+		eye2.draw(win)
+		win_hangmanpic.append(eye2)
+		eye1_inner = Circle(Point(win_width / 2 - 40, 285), 5)
+		eye1_inner.setFill(color_rgb(255, 177, 177))
+		eye1_inner.setOutline(color_rgb(170, 0, 0))
+		eye1_inner.draw(win)
+		win_hangmanpic.append(eye1_inner)
+		eye2_inner = eye1_inner.clone()
+		eye2_inner.move(80, 0)
+		eye2_inner.draw(win)
+		win_hangmanpic.append(eye2_inner)
+		mouth = Circle(Point(win_width / 2, 190), 50)
+		mouth.setFill(color_rgb(170, 0, 0))
+		mouth.setOutline(color_rgb(170, 0, 0))
+		mouth.draw(win)
+		win_hangmanpic.append(mouth)
+		mouth_cover = Circle(Point(win_width / 2, 185), 50)
+		mouth_cover.setFill(color_rgb(255, 177, 177))
+		mouth_cover.setOutline(color_rgb(255, 177, 177))
+		mouth_cover.draw(win)
+		win_hangmanpic.append(mouth_cover)
+
 	# Draw a button to ask if the player wants to play again
 	win_butagain = Rectangle(Point(win_width - 90, 30), Point(win_width, 0))
 	win_butagain.setFill(color_rgb(126, 236, 53))
@@ -294,6 +333,7 @@ def main(win, infile_name):
 	win_butagain_label = Text(Point(win_width - 45, 15), 'Play again?')
 	win_butagain_label.setTextColor(color_rgb(0, 110, 0))
 	win_butagain_label.draw(win)
+
 	# As well as a button for if the player want to quit the game
 	win_butquit = Rectangle(Point(4, 30), Point(54, 0))
 	win_butquit.setFill(color_rgb(255, 177, 177))
@@ -302,6 +342,7 @@ def main(win, infile_name):
 	win_butquit_label = Text(Point(29, 15), 'Quit')
 	win_butquit_label.setTextColor(color_rgb(170, 0, 0))
 	win_butquit_label.draw(win)
+
 	# Wait for an option to be selected by the player, then either quit the game or
 	#	play another round, based on what button the player clicks
 	opt_selected = False
@@ -313,6 +354,7 @@ def main(win, infile_name):
 		elif p.getX() <= 54 and p.getY() <= 30:
 			# Exit game
 			opt_selected = 2
+
 	# Do something based on the option that was selected
 	if opt_selected == 1:
 		# Undraw all graphics objects from this game and call another instance of the game
@@ -323,9 +365,11 @@ def main(win, infile_name):
 					hm_obj.undraw()
 			else:
 				obj.undraw()
+
 		main(win, infile_name)
 	else:
 		# Close the game window
 		win.close()
+
 # Start the first instance of the Hangman game
 main(False, False)
