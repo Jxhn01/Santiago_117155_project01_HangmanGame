@@ -2,6 +2,7 @@
 from random import randint
 from graphics import *
 
+
 #########################################################################
 # 											                            #
 # 								getInfile()								#
@@ -28,6 +29,7 @@ def getInfile():
 				infile_name = input('\n{0} was not found!\n\nPlease try again, or specify a different file (include the full file path if the file is in a different directory than the Hangman program): '.format(infile_name))
 	return infile_name
 
+
 ############################################################################
 # 																		   #
 # 								chooseWord()							   #
@@ -45,6 +47,7 @@ def chooseWord(infile_name):
 	chosen_word = wordlist[random_num].replace('\n', '')
 	word_len = len(chosen_word)
 	return chosen_word, word_len
+
 
 ############################################################################################
 # 																						   #
@@ -119,6 +122,7 @@ def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 		line14.draw(win)
 		win_hangmanpic.append(line14)
 
+		
 #####################################################
 #													#
 # 						main()						#
