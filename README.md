@@ -16,4 +16,4 @@ This program was originally written by Tom Catullo (https://github.com/Tom25/Han
 - Letting the user or customer know what the words are about.
 - Fixing the happy face when you win the game.
 - Adding the sad face when you lose the game.
-- When the user or client has failed or completed the correct word, it will move the description (attempts and relation of words) upwards, freeing up space on the screen.
+- When the user or client has failed or completed the guess word, it will move the description (attempts and relation of words) upwards, freeing up space on the screen.
