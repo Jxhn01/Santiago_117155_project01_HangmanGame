@@ -11,6 +11,7 @@ You want to create or specify your own words? Just overwrite or replace the word
 This program was originally written by Tom Catullo (https://github.com/Tom25/Hangman.git) and modified by me as an reference project. I'm learning Python and I didn't have a lot time to start the project from scratch, but I did some moddifications to the project that I think it was lacking information to the user or customer to know.
 
 ## Modifications
+- Replacing the list of words that the code originally came with, by simpler words and related to school and university things.
 - Telling the user or customer to know how tries or attempts they have in total.
 - Letting the user or customer know what the words are about.
 - Fixing the happy face when you win the game.
