@@ -102,26 +102,6 @@ def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 		line9.draw(win)
 		win_hangmanpic.append(line9)
 
-		# GAME OVER: Draw a face on our hangman guy
-		# Draw his "X"-eyes
-		line10 = Line(Point(hangman_yaxis + 7, 260), Point(hangman_yaxis + 2, 255))
-		line10.draw(win)
-		win_hangmanpic.append(line10)
-		line11 = Line(Point(hangman_yaxis + 2, 260), Point(hangman_yaxis + 7, 255))
-		line11.draw(win)
-		win_hangmanpic.append(line11)
-		line12 = Line(Point(hangman_yaxis - 7, 260), Point(hangman_yaxis - 2, 255))
-		line12.draw(win)
-		win_hangmanpic.append(line12)
-		line13 = Line(Point(hangman_yaxis - 2, 260), Point(hangman_yaxis - 7, 255))
-		line13.draw(win)
-		win_hangmanpic.append(line13)
-
-		# Draw his mouth
-		line14 = Line(Point(hangman_yaxis - 7, 247), Point(hangman_yaxis + 7, 247))
-		line14.draw(win)
-		win_hangmanpic.append(line14)
-
 		
 #####################################################
 #													#
