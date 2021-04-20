@@ -16,3 +16,4 @@ This program was originally written by Tom Catullo (https://github.com/Tom25/Han
 - Letting the user or customer know what the words are about.
 - Fixing the happy face when you win the game.
 - Adding the sad face when you lose the game.
+- When the user has completed the 7 stikers or guessed the word the message of the attempts or tries and the ewlation of the words will desappear.
