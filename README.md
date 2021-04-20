@@ -11,7 +11,7 @@ You want to create or specify your own words? Just overwrite or replace the word
 This program was originally written by Tom Catullo and modified by me as an reference project. I was learning Python and I didn't have time to start the project from scratch, but I did some moddifications to the project, that I think it was lacking information to the user or customer.
 
 ## Modifications
-- Telling the user or customer know how tries have in total.
+- Telling the user or customer to know how tries or attempts they have in total.
 - Letting the user or customer know what the words are about.
 - Fixing the happy face when you win the game.
 - Adding the sad face when you lose the game.
