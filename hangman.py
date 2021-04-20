@@ -219,6 +219,7 @@ def main(win, infile_name):
 	win_butguess.undraw()
 	win_butguess_label.undraw()
 	win_message.move(0, -10)  # Move the message area down a bit to fill up some space
+	win_message2.move(0, 500)  # Move the message area up to fill up some space
 
 	# Update the grid to display the full, actual word that the program chose
 	win_grid.setText(word.upper())
