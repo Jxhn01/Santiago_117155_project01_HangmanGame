@@ -192,7 +192,6 @@ def main(win, infile_name):
 				game_won = True
 			else:
 				win_message.setText("Nice! {0} is in the word. Try another letter.".format(guess.upper()))
-				win_message3.setText("") # Eliminates the (You have a total of 7 strikes.) message when the user or customer guessed the correct letter.
 		elif guess in guessed_letters:
 			# This letter has already been guessed, so alert the player about this and wait for another guess
 			win_message.setText("You've already guessed {0}. Try another letter.".format(guess.upper()))
