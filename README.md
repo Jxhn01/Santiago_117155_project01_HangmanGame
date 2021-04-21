@@ -4,11 +4,9 @@ How to play? Download the repository to your computer and run the 'hangman.py'! 
 ## Customization
 You want to create or specify your own words? Just overwrite or replace the words from the 'words.txt', with each words on seperated lines. Words with spaces will also work. (Ex: ice cream). Also you can add yor massage as you like: in the line 159 adjust the message to your preference.
 
-## Acknowledgements
-- The included graphics library, `graphics.py`, was written by John Zelle for use with the book "Python Programming: An Introduction to Computer Science" (Franklin, Beedle & Associates). 
-
 ## Reference
-This program was originally written by Tom Catullo (https://github.com/Tom25/Hangman.git) and modified by me as an reference project. I'm learning Python and I didn't have a lot time to start the project from scratch, but I did some moddifications to the project that I think it was lacking information to the user or customer to know.
+- The included graphics library, `graphics.py`, was written by John Zelle for use with the book "Python Programming: An Introduction to Computer Science" (Franklin, Beedle & Associates).
+- This program was originally written by Tom Catullo (https://github.com/Tom25/Hangman.git) and modified by me as an reference project. I'm learning Python.  I did some moddifications to the project that I think it was lacking information to the user or customer to know.
 
 ## Modifications
 - Replace the words that came with the original code.
