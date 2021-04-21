@@ -320,15 +320,6 @@ def main(win, infile_name):
 	win_butagain_label.setTextColor(color_rgb(0, 110, 0))
 	win_butagain_label.draw(win)
 
-	# As well as a button for if the player want to quit the game
-	win_butquit = Rectangle(Point(4, 30), Point(54, 0))
-	win_butquit.setFill(color_rgb(255, 177, 177))
-	win_butquit.setOutline(color_rgb(170, 0, 0))
-	win_butquit.draw(win)
-	win_butquit_label = Text(Point(29, 15), 'Quit')
-	win_butquit_label.setTextColor(color_rgb(170, 0, 0))
-	win_butquit_label.draw(win)
-
 	# Wait for an option to be selected by the player, then either quit the game or
 	#	play another round, based on what button the player clicks
 	opt_selected = False
@@ -337,14 +328,11 @@ def main(win, infile_name):
 		if p.getX() >= (win_width - 90) and p.getY() <= 30:
 			# Play again
 			opt_selected = 1
-		elif p.getX() <= 54 and p.getY() <= 30:
-			# Exit game
-			opt_selected = 2
 
 	# Do something based on the option that was selected
 	if opt_selected == 1:
 		# Undraw all graphics objects from this game and call another instance of the game
-		graphic_objs = [win_message, win_message2, win_message3, win_ground, win_grid, win_butagain, win_butagain_label, win_butquit, win_butquit_label, win_hangmanpic]
+		graphic_objs = [win_message, win_message2, win_message3, win_ground, win_grid, win_butagain, win_butagain_label, win_hangmanpic]
 		for obj in graphic_objs:
 			if obj == win_hangmanpic:
 				for hm_obj in win_hangmanpic:
