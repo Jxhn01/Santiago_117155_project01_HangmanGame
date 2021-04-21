@@ -270,6 +270,7 @@ def main(win, infile_name):
 		win_message2.setText("GAME OVER")
 		win_message2.setTextColor(color_rgb(170, 0, 0))
 		win_message2.setSize(24)
+		win_message3.setText("You've used all your attempts")
 		# Added the sad face when player lose the game.
 		# Remove the incomplete Hangman picture.
 		for hm_obj in win_hangmanpic:
