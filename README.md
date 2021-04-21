@@ -11,9 +11,8 @@ You want to create or specify your own words? Just overwrite or replace the word
 This program was originally written by Tom Catullo (https://github.com/Tom25/Hangman.git) and modified by me as an reference project. I'm learning Python and I didn't have a lot time to start the project from scratch, but I did some moddifications to the project that I think it was lacking information to the user or customer to know.
 
 ## Modifications
-- Replacing the list of words that the code originally came with, by simpler words and related to school and university things.
-- Telling the user or customer to know how tries or attempts they have in total.
-- Letting the user or customer know what the words are about.
-- Fixing the happy face when you win the game.
-- Adding the sad face when you lose the game.
-- When the user or client has failed or completed the guess word, it will move the description (attempts and relation of words) upwards, freeing up space on the screen.
+- Replace the words that came with the original code.
+- Let the user know a brief description of the game: relation of the words and how many attempts he has in total.
+- When the user or customer enter the worng letter, let the user or customer know the number of fail attempts currently have.
+- Fix the happy face when you win and add the sad face when you lose.
+- Add when you have finished the attempts or have won the game the text of Game Over or Victory in the description section.
