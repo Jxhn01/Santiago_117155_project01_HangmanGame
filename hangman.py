@@ -220,6 +220,10 @@ def main(win, infile_name):
 	if game_won == True:
 		win_message.setText("Congrats! You've guessed the word correctly.")
 		win_message.setTextColor(color_rgb(0, 120, 0))
+		win_message2.setText("VICTORY!")
+		win_message2.setTextColor(color_rgb(0, 120, 0))
+		win_message2.setSize(24)
+		win_message3.setText("")
 		win_grid.setTextColor(color_rgb(0, 120, 0))
 		# Remove the incomplete Hangman picture
 		for hm_obj in win_hangmanpic:
