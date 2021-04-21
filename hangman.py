@@ -4,12 +4,9 @@ from graphics import *
 
 
 #########################################################################
-# 					                                #
-# 				getInfile()				#
-#                             --------------- 				#
-# 				                            		#
+# getInfile()								
+#
 # Gets a text file containing words to be chosen by the Hangman program #
-# 									#
 #########################################################################
 def getInfile():
 	try:
@@ -31,12 +28,9 @@ def getInfile():
 
 
 ############################################################################
-# 									   #
-# 				   chooseWord()				   #
-# 				 ----------------			   #
-# 									   #
-# Chooses a word randomly from the list of words taken from the input file #
-# 									   #
+# chooseWord()							   #
+#
+# Chooses a word randomly from the list of words taken from the input file 
 ############################################################################
 def chooseWord(infile_name):
 	infile = open(infile_name, 'r')
@@ -50,13 +44,10 @@ def chooseWord(infile_name):
 
 
 ############################################################################################
-# 											   #
-# 					    drawPiece()					   #
-# 					------------------				   #
-# 											   #
-# Draws a piece of the Hangman picture when an incorrect letter is guessed. The piece that #
-#	is drawn depends on the number of strikes that the player has amounted thus far	   #
-# 											   #
+# drawPiece()
+#
+# Draws a piece of the Hangman picture when an incorrect letter is guessed. The piece that 
+#	is drawn depends on the number of strikes that the player has amounted thus far		   
 ############################################################################################
 def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 	hangman_yaxis = win_width / 2.2  # The body of the hangman will align with this axis
@@ -104,13 +95,9 @@ def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 
 		
 #####################################################
-#						    #
-# 			   main()		    #
-#			------------		    #
-#						    #
-# Carries out the main functionality of the program #
-#						    #
-#						    #
+# main()
+#
+# Carries out the main functionality of the program 
 #####################################################
 def main(win, infile_name):
 	# If a word list file hasn't yet been sepcified, then we need to get one
@@ -136,14 +123,17 @@ def main(win, infile_name):
 		win.setCoords(0, 0, win_width, win_height)
 
 	# Draw the game message area, the ground of the Hangman graphic, and the empty grid
-	win_message2 = Text(Point(win_width2 / 1.60, 457), "Guess the correct word by entering letters. You have 7 attempts!\nThe words are related to useful things at school/university.")
-	win_message2.setStyle('bold')
-	win_message2.draw(win)
-	win_ground = Line(Point(win_width / 10, 433), Point(win_width - win_width / 10, 433))
-	win_ground.draw(win)
 	win_message = Text(Point(win_width / 2, 70), "Let's play! Guess a letter below to see if it's in the word.")
 	win_message.setStyle('bold')
 	win_message.draw(win)
+	win_message2 = Text(Point(win_width2 / 1.60, 457), "Guess the correct word by entering letters.\nThe words are related to useful things at school/university.")
+	win_message2.setStyle('bold')
+	win_message2.draw(win)
+	win_message3 = Text(Point(win_width2 / 1.60, 375), "You have a total of 7 strikes.")
+	win_message3.setStyle('bold')
+	win_message3.draw(win) 
+	win_ground = Line(Point(win_width / 10, 433), Point(win_width - win_width / 10, 433))
+	win_ground.draw(win)
 	win_ground = Line(Point(win_width / 10, 90), Point(win_width - win_width / 10, 90))
 	win_ground.draw(win)
 	win_grid = Text(Point(win_width / 2, win_height - 70), grid)
@@ -210,6 +200,7 @@ def main(win, infile_name):
 			guessed_letters.append(guess)
 			strikes = strikes + 1
 			win_message.setText('{0} is a wrong guess! Try another letter.'.format(guess.upper()))
+			win_message3.setText('This is your strike {0}'.format(strikes))
 			drawPiece(strikes, win, win_width, win_height, win_hangmanpic)
 
 	# The game is over, so let's remove some of the objects at the bottom of the window
@@ -219,7 +210,6 @@ def main(win, infile_name):
 	win_butguess.undraw()
 	win_butguess_label.undraw()
 	win_message.move(0, -10)  # Move the message area down a bit to fill up some space
-	win_message2.move(0, 500)  # Move the message area up to fill up some space
 
 	# Update the grid to display the full, actual word that the program chose
 	win_grid.setText(word.upper())
@@ -273,6 +263,9 @@ def main(win, infile_name):
 		win_message.setText("Sorry! You didn't completely guess the word.")
 		win_message.setTextColor(color_rgb(170, 0, 0))
 		win_grid.setTextColor(color_rgb(170, 0, 0))
+		win_message2.setText("GAME OVER")
+		win_message2.setTextColor(color_rgb(170, 0, 0))
+		win_message2.setSize(24)
 		# Added the sad face when player lose the game.
 		# Remove the incomplete Hangman picture.
 		for hm_obj in win_hangmanpic:
@@ -346,7 +339,7 @@ def main(win, infile_name):
 	# Do something based on the option that was selected
 	if opt_selected == 1:
 		# Undraw all graphics objects from this game and call another instance of the game
-		graphic_objs = [win_message, win_message2, win_ground, win_grid, win_butagain, win_butagain_label, win_butquit, win_butquit_label, win_hangmanpic]
+		graphic_objs = [win_message, win_message2, win_message3, win_ground, win_grid, win_butagain, win_butagain_label, win_butquit, win_butquit_label, win_hangmanpic]
 		for obj in graphic_objs:
 			if obj == win_hangmanpic:
 				for hm_obj in win_hangmanpic:
