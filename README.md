@@ -6,7 +6,7 @@ You want to create or specify your own words? Just overwrite or replace the word
 
 ## Reference
 - The included graphics library, `graphics.py`, was written by John Zelle for use with the book "Python Programming: An Introduction to Computer Science" (Franklin, Beedle & Associates).
-- This program was originally written by Tom Catullo (https://github.com/Tom25/Hangman.git) and modified by me, as an reference project. I'm learning Python.  I did some moddifications to the project that I think it was lacking information to the user or customer know.
+- This program was originally written by Tom Catullo (https://github.com/Tom25/Hangman.git) and modified by me, as an reference code. I did some moddifications to the project and add information to the user and customer.
 
 ## Modifications
 - Replace the words that came with the original code.
