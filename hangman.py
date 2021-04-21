@@ -192,6 +192,7 @@ def main(win, infile_name):
 				game_won = True
 			else:
 				win_message.setText("Nice! {0} is in the word. Try another letter.".format(guess.upper()))
+				win_message3.setText("") # Eliminates the (You have a total of 7 strikes.) message when the user or customer guessed the correct letter.
 		elif guess in guessed_letters:
 			# This letter has already been guessed, so alert the player about this and wait for another guess
 			win_message.setText("You've already guessed {0}. Try another letter.".format(guess.upper()))
@@ -200,7 +201,7 @@ def main(win, infile_name):
 			guessed_letters.append(guess)
 			strikes = strikes + 1
 			win_message.setText('{0} is a wrong guess! Try another letter.'.format(guess.upper()))
-			win_message3.setText('This is your strike {0}'.format(strikes))
+			win_message3.setText('This is your strike {0}'.format(strikes)) # This prints to the user or customer the number of strikes have made, when entering a incorrect letter. 
 			drawPiece(strikes, win, win_width, win_height, win_hangmanpic)
 
 	# The game is over, so let's remove some of the objects at the bottom of the window
