@@ -140,18 +140,18 @@ def main(win, infile_name):
 	win_grid.draw(win)
 
 	# Draw the input box and accompanying text label
-	win_guesstxt = Text(Point(win_width / 2 - 35, 30), "Type a letter:")
+	win_guesstxt = Text(Point(win_width / 4 - 35, 30), "Type a letter:")
 	win_guesstxt.draw(win)
-	win_guessinput = Entry(Point(win_width / 2 + 30, 28), 2)
+	win_guessinput = Entry(Point(win_width / 4 + 30, 28), 3)
 	win_guessinput.draw(win)
 	win_guessinput.setText('')
 
 	# Draw the "Guess it!" button and its label
-	win_butguess = Rectangle(Point(win_width / 2 + 55, 43), Point(win_width / 2 + 130, 13))
+	win_butguess = Rectangle(Point(win_width / 2 + 80, 43), Point(win_width / 2 + 200, 13))
 	win_butguess.setFill(color_rgb(126, 236, 53))
 	win_butguess.setOutline(color_rgb(0, 110, 0))
 	win_butguess.draw(win)
-	win_butguess_label = Text(Point(win_width / 2 + 94, 28), 'Guess it!')
+	win_butguess_label = Text(Point(win_width / 2 + 140, 28), 'Guess it!')
 	win_butguess_label.setTextColor(color_rgb(0, 110, 0))
 	win_butguess_label.draw(win)
 
@@ -166,7 +166,7 @@ def main(win, infile_name):
 		p = win.getMouse()
 		# If the player clicked outside of the area of the "Guess it!" button, then we go back to the start
 		#	of the loop and wait for another click
-		if p.getX() < win_width / 2 + 55 or p.getX() > win_width / 2 + 130 or p.getY() < 13 or p.getY() > 43:
+		if p.getX() < win_width / 2 + 80 or p.getX() > win_width / 2 + 200 or p.getY() < 13 or p.getY() > 43:
 			continue
 
 		# Grab the guessed letter, and if it's invalid, go back to the top of the loop and wait for another guess
@@ -312,12 +312,12 @@ def main(win, infile_name):
 		win_hangmanpic.append(mouth_cover)
 
 	# Draw a button to ask if the player wants to play again
-	win_butagain = Rectangle(Point(win_width - 90, 30), Point(win_width, 0))
-	win_butagain.setFill(color_rgb(126, 236, 53))
-	win_butagain.setOutline(color_rgb(0, 110, 0))
+	win_butagain = Rectangle(Point(win_width - 495, 30), Point(win_width, 0))
+	win_butagain.setFill(color_rgb(220,220,220))
+	win_butagain.setOutline(color_rgb(128,128,128))
 	win_butagain.draw(win)
-	win_butagain_label = Text(Point(win_width - 45, 15), 'Play again?')
-	win_butagain_label.setTextColor(color_rgb(0, 110, 0))
+	win_butagain_label = Text(Point(win_width - 250, 15), 'Play again?')
+	win_butagain_label.setTextColor(color_rgb(0,0,0))
 	win_butagain_label.draw(win)
 
 	# Wait for an option to be selected by the player, then either quit the game or
@@ -325,7 +325,7 @@ def main(win, infile_name):
 	opt_selected = False
 	while not(opt_selected):
 		p = win.getMouse()
-		if p.getX() >= (win_width - 90) and p.getY() <= 30:
+		if p.getX() >= (win_width - 495) and p.getY() <= 30:
 			# Play again
 			opt_selected = 1
 
