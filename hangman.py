@@ -3,97 +3,6 @@ from random import randint
 from graphics import *
 
 
-############################################################################################
-# drawPiece()
-#
-# Draws a piece of the Hangman picture when an incorrect letter is guessed. The piece that 
-#	is drawn depends on the number of strikes that the player has amounted thus far		   
-############################################################################################
-def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
-	hangman_yaxis = win_width / 2.2  # The body of the hangman will align with this axis
-	if strike == 1:
-		# Strike 1: Draw the post
-		line1 = Line(Point(win_width - win_width / 3, 100), Point(win_width - win_width / 3, 300))
-		line1.draw(win)
-		win_hangmanpic.append(line1)
-		line2 = Line(Point(win_width - win_width / 3, 300), Point(hangman_yaxis, 300))
-		line2.draw(win)
-		win_hangmanpic.append(line2)
-		line3 = Line(Point(hangman_yaxis, 300), Point(hangman_yaxis, 270))
-		line3.draw(win)
-		win_hangmanpic.append(line3)
-	elif strike == 2:
-		# Strike 2: Draw the head
-		circle4 = Circle(Point(hangman_yaxis, 254), 16)
-		circle4.draw(win)
-		win_hangmanpic.append(circle4)
-	elif strike == 3:
-		# Strike 3: Draw the torso
-		line5 = Line(Point(hangman_yaxis, 238), Point(hangman_yaxis, 180))
-		line5.draw(win)
-		win_hangmanpic.append(line5)
-	elif strike == 4:
-		# Strike 4: Draw the left arm
-		line6 = Line(Point(hangman_yaxis, 225), Point(hangman_yaxis - 20, 200))
-		line6.draw(win)
-		win_hangmanpic.append(line6)
-	elif strike == 5:
-		# Strike 5: Draw the right arm
-		line7 = Line(Point(hangman_yaxis, 225), Point(hangman_yaxis + 20, 200))
-		line7.draw(win)
-		win_hangmanpic.append(line7)
-	elif strike == 6:
-		# Strike 6: Draw the left leg
-		line8 = Line(Point(hangman_yaxis, 180), Point(hangman_yaxis - 15, 135))
-		line8.draw(win)
-		win_hangmanpic.append(line8)
-	elif strike == 7:
-		# Strike 7: Draw the right leg
-		line9 = Line(Point(hangman_yaxis, 180), Point(hangman_yaxis + 15, 135))
-		line9.draw(win)
-		win_hangmanpic.append(line9)
-
-		
-#########################################################################
-# getInfile()								
-#
-# Gets a text file containing words to be chosen by the Hangman program #
-#########################################################################
-def getInfile():
-	try:
-		# First, we check for a file called "words.txt". If it exists in the same directory
-		#	as the Hangman program, then we use this file as our word list automatically
-		with open('words.txt', 'r'): infile_name = 'words.txt'
-	except IOError:
-		# If words.txt cannot be found, then we ask the user to specify a text file
-		found_file = False
-		infile_name = input('Please specify a text file containing a list of words for the Hangman game to choose from (include the full file path if the file is in a different directory than the Hangman program): ')
-		# If the user specifies a file name of a file that cannot be found, we keep asking for
-		#	a valid input file until a valid one is specified
-		while not(found_file):
-			try:
-				with open(infile_name, 'r'): found_file = True
-			except IOError:
-				infile_name = input('\n{0} was not found!\n\nPlease try again, or specify a different file (include the full file path if the file is in a different directory than the Hangman program): '.format(infile_name))
-	return infile_name
-
-
-############################################################################
-# chooseWord()							   #
-#
-# Chooses a word randomly from the list of words taken from the input file 
-############################################################################
-def chooseWord(infile_name):
-	infile = open(infile_name, 'r')
-	wordlist = infile.readlines()
-	total_words = len(wordlist)
-	random_num = randint(0, total_words - 1)
-
-	chosen_word = wordlist[random_num].replace('\n', '')
-	word_len = len(chosen_word)
-	return chosen_word, word_len
-
-		
 #####################################################
 # main()
 #
@@ -345,5 +254,97 @@ def main(win, infile_name):
 		# Close the game window
 		win.close()
 
+
+############################################################################################
+# drawPiece()
+#
+# Draws a piece of the Hangman picture when an incorrect letter is guessed. The piece that 
+#	is drawn depends on the number of strikes that the player has amounted thus far		   
+############################################################################################
+def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
+	hangman_yaxis = win_width / 2.2  # The body of the hangman will align with this axis
+	if strike == 1:
+		# Strike 1: Draw the post
+		line1 = Line(Point(win_width - win_width / 3, 100), Point(win_width - win_width / 3, 300))
+		line1.draw(win)
+		win_hangmanpic.append(line1)
+		line2 = Line(Point(win_width - win_width / 3, 300), Point(hangman_yaxis, 300))
+		line2.draw(win)
+		win_hangmanpic.append(line2)
+		line3 = Line(Point(hangman_yaxis, 300), Point(hangman_yaxis, 270))
+		line3.draw(win)
+		win_hangmanpic.append(line3)
+	elif strike == 2:
+		# Strike 2: Draw the head
+		circle4 = Circle(Point(hangman_yaxis, 254), 16)
+		circle4.draw(win)
+		win_hangmanpic.append(circle4)
+	elif strike == 3:
+		# Strike 3: Draw the torso
+		line5 = Line(Point(hangman_yaxis, 238), Point(hangman_yaxis, 180))
+		line5.draw(win)
+		win_hangmanpic.append(line5)
+	elif strike == 4:
+		# Strike 4: Draw the left arm
+		line6 = Line(Point(hangman_yaxis, 225), Point(hangman_yaxis - 20, 200))
+		line6.draw(win)
+		win_hangmanpic.append(line6)
+	elif strike == 5:
+		# Strike 5: Draw the right arm
+		line7 = Line(Point(hangman_yaxis, 225), Point(hangman_yaxis + 20, 200))
+		line7.draw(win)
+		win_hangmanpic.append(line7)
+	elif strike == 6:
+		# Strike 6: Draw the left leg
+		line8 = Line(Point(hangman_yaxis, 180), Point(hangman_yaxis - 15, 135))
+		line8.draw(win)
+		win_hangmanpic.append(line8)
+	elif strike == 7:
+		# Strike 7: Draw the right leg
+		line9 = Line(Point(hangman_yaxis, 180), Point(hangman_yaxis + 15, 135))
+		line9.draw(win)
+		win_hangmanpic.append(line9)
+
+		
+#########################################################################
+# getInfile()								
+#
+# Gets a text file containing words to be chosen by the Hangman program #
+#########################################################################
+def getInfile():
+	try:
+		# First, we check for a file called "words.txt". If it exists in the same directory
+		#	as the Hangman program, then we use this file as our word list automatically
+		with open('words.txt', 'r'): infile_name = 'words.txt'
+	except IOError:
+		# If words.txt cannot be found, then we ask the user to specify a text file
+		found_file = False
+		infile_name = input('Please specify a text file containing a list of words for the Hangman game to choose from (include the full file path if the file is in a different directory than the Hangman program): ')
+		# If the user specifies a file name of a file that cannot be found, we keep asking for
+		#	a valid input file until a valid one is specified
+		while not(found_file):
+			try:
+				with open(infile_name, 'r'): found_file = True
+			except IOError:
+				infile_name = input('\n{0} was not found!\n\nPlease try again, or specify a different file (include the full file path if the file is in a different directory than the Hangman program): '.format(infile_name))
+	return infile_name
+
+
+############################################################################
+# chooseWord()							   #
+#
+# Chooses a word randomly from the list of words taken from the input file 
+############################################################################
+def chooseWord(infile_name):
+	infile = open(infile_name, 'r')
+	wordlist = infile.readlines()
+	total_words = len(wordlist)
+	random_num = randint(0, total_words - 1)
+
+	chosen_word = wordlist[random_num].replace('\n', '')
+	word_len = len(chosen_word)
+	return chosen_word, word_len
+
+		
 # Start the first instance of the Hangman game
 main(False, False)
