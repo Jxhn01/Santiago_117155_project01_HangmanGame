@@ -3,46 +3,6 @@ from random import randint
 from graphics import *
 
 
-#########################################################################
-# getInfile()								
-#
-# Gets a text file containing words to be chosen by the Hangman program #
-#########################################################################
-def getInfile():
-	try:
-		# First, we check for a file called "words.txt". If it exists in the same directory
-		#	as the Hangman program, then we use this file as our word list automatically
-		with open('words.txt', 'r'): infile_name = 'words.txt'
-	except IOError:
-		# If words.txt cannot be found, then we ask the user to specify a text file
-		found_file = False
-		infile_name = input('Please specify a text file containing a list of words for the Hangman game to choose from (include the full file path if the file is in a different directory than the Hangman program): ')
-		# If the user specifies a file name of a file that cannot be found, we keep asking for
-		#	a valid input file until a valid one is specified
-		while not(found_file):
-			try:
-				with open(infile_name, 'r'): found_file = True
-			except IOError:
-				infile_name = input('\n{0} was not found!\n\nPlease try again, or specify a different file (include the full file path if the file is in a different directory than the Hangman program): '.format(infile_name))
-	return infile_name
-
-
-############################################################################
-# chooseWord()							   #
-#
-# Chooses a word randomly from the list of words taken from the input file 
-############################################################################
-def chooseWord(infile_name):
-	infile = open(infile_name, 'r')
-	wordlist = infile.readlines()
-	total_words = len(wordlist)
-	random_num = randint(0, total_words - 1)
-
-	chosen_word = wordlist[random_num].replace('\n', '')
-	word_len = len(chosen_word)
-	return chosen_word, word_len
-
-
 ############################################################################################
 # drawPiece()
 #
@@ -92,6 +52,46 @@ def drawPiece(strike, win, win_width, win_height, win_hangmanpic):
 		line9 = Line(Point(hangman_yaxis, 180), Point(hangman_yaxis + 15, 135))
 		line9.draw(win)
 		win_hangmanpic.append(line9)
+
+		
+#########################################################################
+# getInfile()								
+#
+# Gets a text file containing words to be chosen by the Hangman program #
+#########################################################################
+def getInfile():
+	try:
+		# First, we check for a file called "words.txt". If it exists in the same directory
+		#	as the Hangman program, then we use this file as our word list automatically
+		with open('words.txt', 'r'): infile_name = 'words.txt'
+	except IOError:
+		# If words.txt cannot be found, then we ask the user to specify a text file
+		found_file = False
+		infile_name = input('Please specify a text file containing a list of words for the Hangman game to choose from (include the full file path if the file is in a different directory than the Hangman program): ')
+		# If the user specifies a file name of a file that cannot be found, we keep asking for
+		#	a valid input file until a valid one is specified
+		while not(found_file):
+			try:
+				with open(infile_name, 'r'): found_file = True
+			except IOError:
+				infile_name = input('\n{0} was not found!\n\nPlease try again, or specify a different file (include the full file path if the file is in a different directory than the Hangman program): '.format(infile_name))
+	return infile_name
+
+
+############################################################################
+# chooseWord()							   #
+#
+# Chooses a word randomly from the list of words taken from the input file 
+############################################################################
+def chooseWord(infile_name):
+	infile = open(infile_name, 'r')
+	wordlist = infile.readlines()
+	total_words = len(wordlist)
+	random_num = randint(0, total_words - 1)
+
+	chosen_word = wordlist[random_num].replace('\n', '')
+	word_len = len(chosen_word)
+	return chosen_word, word_len
 
 		
 #####################################################
